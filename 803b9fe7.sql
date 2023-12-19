@@ -1,4 +1,5 @@
 SELECT
+    SCRIP_CD as CompanyCode,
     max(Company) as Company,
     group_concat(Announcement, "\n\n") as Announcement
 FROM
@@ -25,9 +26,9 @@ FROM
             end as Announcement,
             DissemDT
         FROM
-            data
+            {{tableName}}
         WHERE
-            SCRIP_CD is not null $conditions
+            SCRIP_CD is not null {{conditions}}
         ORDER BY
             SCRIP_CD asc,
             DissemDT asc

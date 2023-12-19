@@ -1,0 +1,37 @@
+[
+  {
+    "group": "Examples",
+    "name": "Companies announcing Fund raising",
+    "value": "rights preferential funds",
+    "lastUpdated": "2023-11-01T00:00:00Z",
+    "biIcon": "bi-bookmark"
+  },
+  {
+    "group": "Examples",
+    "name": "Acquisition related announcements",
+    "value": "draft offer acquisition",
+    "lastUpdated": "2023-11-01T00:00:00Z",
+    "biIcon": "bi-bookmark"
+  },
+  {
+    "group": "Examples",
+    "name": "Change in management",
+    "value": "resignation change.*management",
+    "lastUpdated": "2023-11-01T00:00:00Z",
+    "biIcon": "bi-bookmark"
+  },
+  {
+    "group": "Examples",
+    "name": "Order receipt updates",
+    "value": "receipt.*order",
+    "lastUpdated": "2023-11-01T00:00:00Z",
+    "biIcon": "bi-bookmark"
+  },
+  {
+    "group": "Examples",
+    "name": "Ignore / Exclude",
+    "value": "-compliances -'duplicate share'",
+    "lastUpdated": "2023-11-01T00:00:00Z",
+    "biIcon": "bi-bookmark"
+  }
+]
