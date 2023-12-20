@@ -18,6 +18,15 @@
     <link rel="stylesheet" href="e3ded324.css" />
     <link rel="stylesheet" href="9dc5ce16.css" />
     <title>Datf-lat: Filter, Search, Visualize data</title>
+    <script>
+      (function(){
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect != location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
   </head>
   <body data-bs-no-jquery="">
     <datf-lat class="min-vh-100 d-flex flex-column"></datf-lat>
