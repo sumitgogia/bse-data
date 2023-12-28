@@ -1,4 +1,4 @@
-import { n as n$4, s as s$4, j, i as i$1, t as t$1, e as e$3, A, T, a as i$2, _ as __decorate, b as e$4, B as BaseView, x, c as A$1, l as localStorageContext, d as loggerContext, D as DtfEvent, o as o$3, f as analytics } from './cf532532.js';
+import { n as n$4, s as s$4, j, i as i$1, t as t$1, e as e$3, A, T, a as i$2, _ as __decorate, b as e$4, B as BaseView, x, c as A$1, l as localStorageContext, d as loggerContext, D as DtfEvent, o as o$3, f as analytics } from './b3fde99e.js';
 import { j as jQuery } from './c5e81f2c.js';
 import { h as hooks } from './e9aa0746.js';
 
@@ -7676,7 +7676,7 @@ function friendlyDateTime(dateTimeish) {
 function __variableDynamicURLRuntime0__(path) {
   switch (path) {
     case '../../../../assets/json/announcements-company-filter-examples.json':
-      return new URL(new URL('3642ad5b.json', import.meta.url).href, import.meta.url);
+      return new URL(new URL('7629c015.json', import.meta.url).href, import.meta.url);
     case '../../../../assets/json/announcements-search-box-examples.json':
       return new URL(new URL('193b5117.json', import.meta.url).href, import.meta.url);
     default:
@@ -7701,7 +7701,7 @@ const remove = (from, predicate) => {
 let BookmarkValueComponent = BookmarkValueComponent_1 = class BookmarkValueComponent2 extends BaseView {
   constructor() {
     super(...arguments);
-    this.value = "";
+    this._value = "";
     this.allowClear = false;
     this.editMode = false;
     this.defaultGroup = "My Bookmarks";
@@ -7717,6 +7717,23 @@ let BookmarkValueComponent = BookmarkValueComponent_1 = class BookmarkValueCompo
   }
   get name() {
     return this._name;
+  }
+  get value() {
+    return this._value;
+  }
+  set value(v) {
+    const newValue = v.trim();
+    const currentValue = this.value;
+    if (newValue !== "" && newValue !== currentValue) {
+      const savedValue = this.__savedValues.find(sv => sv.value === currentValue);
+      if (savedValue) {
+        savedValue.value = newValue;
+        savedValue.lastUpdated = DateTime.now().toISO();
+        this._savedValues = [...this.__savedValues];
+      }
+    }
+    this._value = newValue;
+    this.requestUpdate();
   }
   set _savedValues(sv) {
     this.__savedValues = sv;
@@ -7737,7 +7754,7 @@ let BookmarkValueComponent = BookmarkValueComponent_1 = class BookmarkValueCompo
       return r.text();
     }).then(json => {
       this._exampleValues = JSON.parse(json);
-    }).catch(error => this.logger.warn(`Error fetching ${examplesFile}:`, error));
+    }).catch(error => this.logger.debug(`Error fetching ${examplesFile}:`, error));
     if (this._savedValuesKey) {
       this.__savedValues = this.localStorageService.getItem(this._savedValuesKey, []);
     }
@@ -7845,7 +7862,7 @@ __decorate([c$3({
   context: loggerContext
 })], BookmarkValueComponent.prototype, "logger", void 0);
 __decorate([n$4()], BookmarkValueComponent.prototype, "name", null);
-__decorate([n$4()], BookmarkValueComponent.prototype, "value", void 0);
+__decorate([n$4()], BookmarkValueComponent.prototype, "value", null);
 __decorate([n$4({
   type: Boolean
 })], BookmarkValueComponent.prototype, "allowClear", void 0);
@@ -8051,7 +8068,7 @@ let CompanySelectorComponent = CompanySelectorComponent_1 = class CompanySelecto
       },
       insertTag: (data, tag) => {
         data.unshift(tag);
-        this.prependConditionOption(tag);
+        this.prependConditionOption(tag.id);
       }
     }).on("change", () => {
       const {
@@ -8106,7 +8123,7 @@ let CompanySelectorComponent = CompanySelectorComponent_1 = class CompanySelecto
           conditions.push(match[1]);
         }
       }
-      serializable.push(`${v.text}|${v.id}`);
+      serializable.push(`${v.id}`);
     });
     return {
       selected,
@@ -8116,11 +8133,11 @@ let CompanySelectorComponent = CompanySelectorComponent_1 = class CompanySelecto
   }
   prependConditionOption(condition) {
     const $companyFilter = jQuery(this._companyFilterRef.value);
-    const $existing = $companyFilter.find(`option[value='${condition.id}']`);
+    const $existing = $companyFilter.find(`option[value='${condition.replace(/'/g, "\\'")}']`);
     if ($existing.length) {
       $existing.detach().prependTo($companyFilter);
     } else {
-      $companyFilter.prepend(new Option(condition.text, condition.id, false, false));
+      $companyFilter.prepend(new Option(condition, condition, false, false));
     }
   }
   setSelectedData(selected, conditions) {
@@ -8129,7 +8146,7 @@ let CompanySelectorComponent = CompanySelectorComponent_1 = class CompanySelecto
     let value = selected;
     if (conditions) {
       conditions.forEach(c => this.prependConditionOption(c));
-      value = [...selected, ...conditions.map(c => c.id)];
+      value = [...selected, ...conditions];
     }
     (_a = $companyFilter.val(value)) === null || _a === void 0 ? void 0 : _a.trigger("change");
   }
@@ -8140,15 +8157,11 @@ let CompanySelectorComponent = CompanySelectorComponent_1 = class CompanySelecto
       if (v.trim() === "") {
         return;
       }
-      const [text, id] = v.split("|");
-      const numId = Number(id);
+      const numId = Number(v);
       if (numId) {
         selected.push(numId);
       } else {
-        conditions.push({
-          id,
-          text
-        });
+        conditions.push(v);
       }
     });
     this.setSelectedData(selected, conditions);
@@ -8420,7 +8433,7 @@ let AnnouncementView = AnnouncementView_1 = class AnnouncementView2 extends Base
       const companyService = await this.getCompanyService();
       try {
         const companies = await companyService.companies({
-          conditions: conditions.join(" and "),
+          conditions: conditions.join(" or "),
           codes: Object.keys((_a = this._companyNamesByCode) !== null && _a !== void 0 ? _a : {})
         });
         let cCodes = companies.map(c => c.Code);

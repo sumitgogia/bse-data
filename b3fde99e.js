@@ -6057,6 +6057,7 @@ var index = gaNode;
 
 const analytics = analyticsLib({
   app: "datflat-app",
+  debug: true,
   plugins: [index()]
 });
 
@@ -6156,7 +6157,7 @@ let DatflatApp = DatflatApp_1 = class DatflatApp2 extends BaseView {
       component: "about-view"
     }, {
       path: "/bse",
-      children: () => import('./0d7c8e70.js').then(module => module.routes)
+      children: () => import('./ddad1daa.js').then(module => module.routes)
     }
     // { path: '(.*)', redirect: '/' },
     ]);

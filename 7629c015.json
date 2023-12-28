@@ -2,35 +2,35 @@
   {
     "group": "Examples",
     "name": "Large Cap",
-    "value": "c:\"(MktCapFF > 20000)\"|c:\"(MktCapFF > 20000)\"",
+    "value": "c:\"(MktCapFF > 20000)\"",
     "lastUpdated": "2023-11-01T00:00:00Z",
     "biIcon": "bi-bookmark"
   },
   {
     "group": "Examples",
     "name": "Mid Cap",
-    "value": "c:\"(MktCapFF > 5000) AND (MktCapFF < 20000)\"|c:\"(MktCapFF > 5000) AND (MktCapFF < 20000)\"",
+    "value": "c:\"(MktCapFF > 5000) AND (MktCapFF < 20000)\"",
     "lastUpdated": "2023-11-01T00:00:00Z",
     "biIcon": "bi-bookmark"
   },
   {
     "group": "Examples",
     "name": "Small Cap",
-    "value": "c:\"(MktCapFF < 5000)\"|c:\"(MktCapFF < 5000)\"",
+    "value": "c:\"(MktCapFF < 5000)\"",
     "lastUpdated": "2023-11-01T00:00:00Z",
     "biIcon": "bi-bookmark"
   },
   {
     "group": "Examples",
     "name": "Micro Cap",
-    "value": "c:\"(MktCapFF > 50) AND (MktCapFF < 500)\"|c:\"(MktCapFF > 50) AND (MktCapFF < 500)\"",
+    "value": "c:\"(MktCapFF > 50) AND (MktCapFF < 500)\"",
     "lastUpdated": "2023-11-01T00:00:00Z",
     "biIcon": "bi-bookmark"
   },
   {
     "group": "Examples",
-    "name": "Adani",
-    "value": "ADANI GREEN ENERGY LIMITED|541450,ADANI PORTS AND SPECIAL ECONOMIC ZONE LIMITED|532921",
+    "name": "All Adani Companies",
+    "value": "c:\"(SecurityId like 'Adani%')\"",
     "lastUpdated": "2023-11-01T00:00:00Z",
     "biIcon": "bi-bookmark"
   }
