@@ -19,7 +19,7 @@ class CompanyService {
     const queryFile = new URL(new URL('8255ff33.sql', import.meta.url).href, import.meta.url).href;
     const results = await bseDataService.executeSelect(queryFile, placeholders, parameters);
     const transformedResults = results.map(r => ({
-      Name: "undefined",
+      Name: r.SecurityName,
       ShortName: r.SecurityId,
       Code: r.SecurityCode,
       MarketCapFF: r.MktCapFF,

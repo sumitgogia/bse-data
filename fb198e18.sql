@@ -23,7 +23,7 @@ FROM
                 when MORE is null
                 or MORE = "" then "\n" || HEADLINE
                 else "\n" || MORE
-            end as Announcement,
+            end || "\n ddt{{" || DissemDT || "}}" as Announcement,
             DissemDT
         FROM
             {{tableName}}

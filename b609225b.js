@@ -1,4 +1,4 @@
-import { n as n$4, s as s$4, j, i as i$1, t as t$1, e as e$3, A, T, a as i$2, _ as __decorate, b as e$4, B as BaseView, x, c as A$1, l as localStorageContext, d as loggerContext, D as DtfEvent, o as o$3, f as analytics } from './b3fde99e.js';
+import { n as n$4, s as s$4, j, i as i$1, t as t$1, e as e$3, A, T, a as i$2, _ as __decorate, b as e$4, B as BaseView, x, c as A$1, l as localStorageContext, d as loggerContext, D as DtfEvent, o as o$3, f as analytics } from './04da0f59.js';
 import { j as jQuery } from './c5e81f2c.js';
 import { h as hooks } from './e9aa0746.js';
 
@@ -219,95 +219,6 @@ const h = new WeakMap(),
     }
   });
 
-/**
- * @license
- * Copyright 2021 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */
-function* o(o, f) {
-  if (void 0 !== o) {
-    let i = 0;
-    for (const t of o) yield f(t, i++);
-  }
-}
-
-/**
- * @license
- * Copyright 2017 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */
-const u = (e, s, t) => {
-    const r = new Map();
-    for (let l = s; l <= t; l++) r.set(e[l], l);
-    return r;
-  },
-  c = e$3(class extends i$1 {
-    constructor(e) {
-      if (super(e), e.type !== t$1.CHILD) throw Error("repeat() can only be used in text expressions");
-    }
-    ct(e, s, t) {
-      let r;
-      void 0 === t ? t = s : void 0 !== s && (r = s);
-      const l = [],
-        o = [];
-      let i = 0;
-      for (const s of e) l[i] = r ? r(s, i) : i, o[i] = t(s, i), i++;
-      return {
-        values: o,
-        keys: l
-      };
-    }
-    render(e, s, t) {
-      return this.ct(e, s, t).values;
-    }
-    update(s, [t, r, c]) {
-      var d;
-      const a$1 = m(s),
-        {
-          values: p$1,
-          keys: v
-        } = this.ct(t, r, c);
-      if (!Array.isArray(a$1)) return this.ut = v, p$1;
-      const h = null !== (d = this.ut) && void 0 !== d ? d : this.ut = [],
-        m$1 = [];
-      let y,
-        x,
-        j = 0,
-        k = a$1.length - 1,
-        w = 0,
-        A = p$1.length - 1;
-      for (; j <= k && w <= A;) if (null === a$1[j]) j++;else if (null === a$1[k]) k--;else if (h[j] === v[w]) m$1[w] = f(a$1[j], p$1[w]), j++, w++;else if (h[k] === v[A]) m$1[A] = f(a$1[k], p$1[A]), k--, A--;else if (h[j] === v[A]) m$1[A] = f(a$1[j], p$1[A]), c$2(s, m$1[A + 1], a$1[j]), j++, A--;else if (h[k] === v[w]) m$1[w] = f(a$1[k], p$1[w]), c$2(s, a$1[j], a$1[k]), k--, w++;else if (void 0 === y && (y = u(v, w, A), x = u(h, j, k)), y.has(h[j])) {
-        if (y.has(h[k])) {
-          const e = x.get(v[w]),
-            t = void 0 !== e ? a$1[e] : null;
-          if (null === t) {
-            const e = c$2(s, a$1[j]);
-            f(e, p$1[w]), m$1[w] = e;
-          } else m$1[w] = f(t, p$1[w]), c$2(s, a$1[j], t), a$1[e] = null;
-          w++;
-        } else p(a$1[k]), k--;
-      } else p(a$1[j]), j++;
-      for (; w <= A;) {
-        const e = c$2(s, m$1[A + 1]);
-        f(e, p$1[w]), m$1[w++] = e;
-      }
-      for (; j <= k;) {
-        const e = a$1[j++];
-        null !== e && p(e);
-      }
-      return this.ut = v, a(s, m$1), T;
-    }
-  });
-
-/**
- * @license
- * Copyright 2021 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */
-function n$1(n, o, r) {
-  return n ? o() : null == r ? void 0 : r();
-}
-
 // these aren't really private, but nor are they really useful to document
 
 /**
@@ -374,154 +285,154 @@ class ZoneIsAbstractError extends LuxonError {
  * @private
  */
 
-const n = "numeric",
+const n$1 = "numeric",
   s = "short",
   l = "long";
 const DATE_SHORT = {
-  year: n,
-  month: n,
-  day: n
+  year: n$1,
+  month: n$1,
+  day: n$1
 };
 const DATE_MED = {
-  year: n,
+  year: n$1,
   month: s,
-  day: n
+  day: n$1
 };
 const DATE_MED_WITH_WEEKDAY = {
-  year: n,
+  year: n$1,
   month: s,
-  day: n,
+  day: n$1,
   weekday: s
 };
 const DATE_FULL = {
-  year: n,
+  year: n$1,
   month: l,
-  day: n
+  day: n$1
 };
 const DATE_HUGE = {
-  year: n,
+  year: n$1,
   month: l,
-  day: n,
+  day: n$1,
   weekday: l
 };
 const TIME_SIMPLE = {
-  hour: n,
-  minute: n
+  hour: n$1,
+  minute: n$1
 };
 const TIME_WITH_SECONDS = {
-  hour: n,
-  minute: n,
-  second: n
+  hour: n$1,
+  minute: n$1,
+  second: n$1
 };
 const TIME_WITH_SHORT_OFFSET = {
-  hour: n,
-  minute: n,
-  second: n,
+  hour: n$1,
+  minute: n$1,
+  second: n$1,
   timeZoneName: s
 };
 const TIME_WITH_LONG_OFFSET = {
-  hour: n,
-  minute: n,
-  second: n,
+  hour: n$1,
+  minute: n$1,
+  second: n$1,
   timeZoneName: l
 };
 const TIME_24_SIMPLE = {
-  hour: n,
-  minute: n,
+  hour: n$1,
+  minute: n$1,
   hourCycle: "h23"
 };
 const TIME_24_WITH_SECONDS = {
-  hour: n,
-  minute: n,
-  second: n,
+  hour: n$1,
+  minute: n$1,
+  second: n$1,
   hourCycle: "h23"
 };
 const TIME_24_WITH_SHORT_OFFSET = {
-  hour: n,
-  minute: n,
-  second: n,
+  hour: n$1,
+  minute: n$1,
+  second: n$1,
   hourCycle: "h23",
   timeZoneName: s
 };
 const TIME_24_WITH_LONG_OFFSET = {
-  hour: n,
-  minute: n,
-  second: n,
+  hour: n$1,
+  minute: n$1,
+  second: n$1,
   hourCycle: "h23",
   timeZoneName: l
 };
 const DATETIME_SHORT = {
-  year: n,
-  month: n,
-  day: n,
-  hour: n,
-  minute: n
+  year: n$1,
+  month: n$1,
+  day: n$1,
+  hour: n$1,
+  minute: n$1
 };
 const DATETIME_SHORT_WITH_SECONDS = {
-  year: n,
-  month: n,
-  day: n,
-  hour: n,
-  minute: n,
-  second: n
+  year: n$1,
+  month: n$1,
+  day: n$1,
+  hour: n$1,
+  minute: n$1,
+  second: n$1
 };
 const DATETIME_MED = {
-  year: n,
+  year: n$1,
   month: s,
-  day: n,
-  hour: n,
-  minute: n
+  day: n$1,
+  hour: n$1,
+  minute: n$1
 };
 const DATETIME_MED_WITH_SECONDS = {
-  year: n,
+  year: n$1,
   month: s,
-  day: n,
-  hour: n,
-  minute: n,
-  second: n
+  day: n$1,
+  hour: n$1,
+  minute: n$1,
+  second: n$1
 };
 const DATETIME_MED_WITH_WEEKDAY = {
-  year: n,
+  year: n$1,
   month: s,
-  day: n,
+  day: n$1,
   weekday: s,
-  hour: n,
-  minute: n
+  hour: n$1,
+  minute: n$1
 };
 const DATETIME_FULL = {
-  year: n,
+  year: n$1,
   month: l,
-  day: n,
-  hour: n,
-  minute: n,
+  day: n$1,
+  hour: n$1,
+  minute: n$1,
   timeZoneName: s
 };
 const DATETIME_FULL_WITH_SECONDS = {
-  year: n,
+  year: n$1,
   month: l,
-  day: n,
-  hour: n,
-  minute: n,
-  second: n,
+  day: n$1,
+  hour: n$1,
+  minute: n$1,
+  second: n$1,
   timeZoneName: s
 };
 const DATETIME_HUGE = {
-  year: n,
+  year: n$1,
   month: l,
-  day: n,
+  day: n$1,
   weekday: l,
-  hour: n,
-  minute: n,
+  hour: n$1,
+  minute: n$1,
   timeZoneName: l
 };
 const DATETIME_HUGE_WITH_SECONDS = {
-  year: n,
+  year: n$1,
   month: l,
-  day: n,
+  day: n$1,
   weekday: l,
-  hour: n,
-  minute: n,
-  second: n,
+  hour: n$1,
+  minute: n$1,
+  second: n$1,
   timeZoneName: l
 };
 
@@ -7673,6 +7584,168 @@ function friendlyDateTime(dateTimeish) {
   }
 }
 
+/**
+ * @license
+ * Copyright 2021 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+function* o(o, f) {
+  if (void 0 !== o) {
+    let i = 0;
+    for (const t of o) yield f(t, i++);
+  }
+}
+
+/**
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+const u = (e, s, t) => {
+    const r = new Map();
+    for (let l = s; l <= t; l++) r.set(e[l], l);
+    return r;
+  },
+  c = e$3(class extends i$1 {
+    constructor(e) {
+      if (super(e), e.type !== t$1.CHILD) throw Error("repeat() can only be used in text expressions");
+    }
+    ct(e, s, t) {
+      let r;
+      void 0 === t ? t = s : void 0 !== s && (r = s);
+      const l = [],
+        o = [];
+      let i = 0;
+      for (const s of e) l[i] = r ? r(s, i) : i, o[i] = t(s, i), i++;
+      return {
+        values: o,
+        keys: l
+      };
+    }
+    render(e, s, t) {
+      return this.ct(e, s, t).values;
+    }
+    update(s, [t, r, c]) {
+      var d;
+      const a$1 = m(s),
+        {
+          values: p$1,
+          keys: v
+        } = this.ct(t, r, c);
+      if (!Array.isArray(a$1)) return this.ut = v, p$1;
+      const h = null !== (d = this.ut) && void 0 !== d ? d : this.ut = [],
+        m$1 = [];
+      let y,
+        x,
+        j = 0,
+        k = a$1.length - 1,
+        w = 0,
+        A = p$1.length - 1;
+      for (; j <= k && w <= A;) if (null === a$1[j]) j++;else if (null === a$1[k]) k--;else if (h[j] === v[w]) m$1[w] = f(a$1[j], p$1[w]), j++, w++;else if (h[k] === v[A]) m$1[A] = f(a$1[k], p$1[A]), k--, A--;else if (h[j] === v[A]) m$1[A] = f(a$1[j], p$1[A]), c$2(s, m$1[A + 1], a$1[j]), j++, A--;else if (h[k] === v[w]) m$1[w] = f(a$1[k], p$1[w]), c$2(s, a$1[j], a$1[k]), k--, w++;else if (void 0 === y && (y = u(v, w, A), x = u(h, j, k)), y.has(h[j])) {
+        if (y.has(h[k])) {
+          const e = x.get(v[w]),
+            t = void 0 !== e ? a$1[e] : null;
+          if (null === t) {
+            const e = c$2(s, a$1[j]);
+            f(e, p$1[w]), m$1[w] = e;
+          } else m$1[w] = f(t, p$1[w]), c$2(s, a$1[j], t), a$1[e] = null;
+          w++;
+        } else p(a$1[k]), k--;
+      } else p(a$1[j]), j++;
+      for (; w <= A;) {
+        const e = c$2(s, m$1[A + 1]);
+        f(e, p$1[w]), m$1[w++] = e;
+      }
+      for (; j <= k;) {
+        const e = a$1[j++];
+        null !== e && p(e);
+      }
+      return this.ut = v, a(s, m$1), T;
+    }
+  });
+
+/**
+ * @license
+ * Copyright 2021 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+function n(n, o, r) {
+  return n ? o() : null == r ? void 0 : r();
+}
+
+const Utils = {
+  tokenize(_input) {
+    const input = _input === null || _input === void 0 ? void 0 : _input.trim();
+    const pattern = /(\w+:|-)?("[^"]*"|'[^']*'|[^\s]+)/g;
+    const results = [];
+    let matched;
+    while (matched = pattern.exec(input)) {
+      const prefix = matched[1];
+      const term = matched[2];
+      const result = {
+        term
+      };
+      let m;
+      if (m = /^"(.+)"$/.exec(term)) {
+        result.term = m[1].trim();
+        result.phrase = true;
+      } else if (m = /^'(.+)'$/.exec(term)) {
+        result.term = m[1].trim();
+        result.phrase = true;
+      }
+      if (prefix) {
+        if (prefix === "-") {
+          result.exclude = true;
+        } else {
+          result.tag = prefix.slice(0, -1);
+        }
+      }
+      results.push(result);
+    }
+    return results;
+  },
+  group(data, keyFn) {
+    return data.reduce((result, d) => {
+      const key = keyFn(d);
+      let group = result.get(key);
+      if (!group) {
+        group = [];
+        result.set(key, group);
+      }
+      group.push(d);
+      return result;
+    }, /* @__PURE__ */new Map());
+  },
+  sort(data, sortOrder, options, ...keys) {
+    return data.sort((d1, d2) => {
+      let result = 0;
+      for (let i = 0; i < keys.length; i += 1) {
+        const key = keys[i];
+        const value1 = d1[key];
+        const value2 = d2[key];
+        if (typeof value1 === "string" && typeof value2 === "string") {
+          result = options.caseInsensitive ? value1.localeCompare(value2, void 0, {
+            sensitivity: "base"
+          }) : value1.localeCompare(value2);
+        } else if (value1 > value2) {
+          result = 1;
+        } else if (value1 < value2) {
+          result = -1;
+        } else {
+          result = 0;
+        }
+        if (sortOrder === "desc") {
+          result *= -1;
+        }
+        if (result !== 0) {
+          break;
+        }
+      }
+      return result;
+    });
+  }
+};
+
 function __variableDynamicURLRuntime0__(path) {
   switch (path) {
     case '../../../../assets/json/announcements-company-filter-examples.json':
@@ -7686,14 +7759,6 @@ function __variableDynamicURLRuntime0__(path) {
   }
 }
 var BookmarkValueComponent_1;
-const groupAndNameSortFn = (a, b) => {
-  var _a, _b;
-  return `${a.group}${(_a = a.name) !== null && _a !== void 0 ? _a : a.value}`.toLowerCase() > `${b.group}${(_b = b.name) !== null && _b !== void 0 ? _b : b.value}`.toLowerCase() ? 1 : -1;
-};
-const groupValues = values => values.reduce((result, svt) => {
-  (result[svt.group] = result[svt.group] || []).push(svt);
-  return result;
-}, {});
 const remove = (from, predicate) => {
   const index = from.findIndex(predicate);
   return index > -1 ? [...from.slice(0, index), ...from.slice(index + 1)] : from;
@@ -7790,7 +7855,7 @@ let BookmarkValueComponent = BookmarkValueComponent_1 = class BookmarkValueCompo
           class="btn btn-light border-secondary-subtle rounded-start-0"
           title="Bookmark"
         >
-          ${n$1(this.isValueSaved(), () => x`<i class="bi bi-star-fill text-primary fw-light"></i>`, () => x`<i class="bi bi-star"></i>`)}
+          ${n(this.isValueSaved(), () => x`<i class="bi bi-star-fill text-primary fw-light"></i>`, () => x`<i class="bi bi-star"></i>`)}
         </button>
         <button
           type="button"
@@ -7802,18 +7867,20 @@ let BookmarkValueComponent = BookmarkValueComponent_1 = class BookmarkValueCompo
         </button>
         <ul class="dropdown-menu dropdown-menu-end w-100">
           ${this.savedValuesTemplate(this._savedValues, true)}
-          ${n$1(!this.editMode && this._exampleValues.length, () => x` ${this._savedValues.length ? x` <li> <hr class="dropdown-divider"> </li> ` : A$1} ${this.savedValuesTemplate(this._exampleValues)} `, () => A$1)}
+          ${n(!this.editMode && this._exampleValues.length, () => x` ${this._savedValues.length ? x` <li> <hr class="dropdown-divider"> </li> ` : A$1} ${this.savedValuesTemplate(this._exampleValues)} `, () => A$1)}
         </ul>
       </div>
     `;
   }
   savedValuesTemplate(svs, canEdit = false) {
-    const svsByGroup = groupValues(svs);
-    return x`${o(Object.entries(svsByGroup), ([group, values]) => x` <li class="d-flex align-items-start justify-content-between"> <span class="dropdown-header text-uppercase">${group}</span> ${canEdit ? x` <button class="btn" @click="${e => {
+    const svsByGroup = Utils.group(svs, sv => sv.group);
+    return x`${o(svsByGroup.entries(), ([group, values]) => x` <li class="d-flex align-items-start justify-content-between"> <span class="dropdown-header text-uppercase">${group}</span> ${canEdit ? x` <button class="btn" @click="${e => {
       this.editMode = !this.editMode;
       e.preventDefault();
       e.stopPropagation();
-    }}"> <i class="bi ${this.editMode ? "bi-x" : "bi-pencil"}"></i> </button> ` : A$1} </li> ${c(values.sort(groupAndNameSortFn), sv => `${sv.group}/${sv.name}`, sv => this.savedValueTemplate(sv))} `)}`;
+    }}"> <i class="bi ${this.editMode ? "bi-x" : "bi-pencil"}"></i> </button> ` : A$1} </li> ${c(Utils.sort(values, "asc", {
+      caseInsensitive: true
+    }, "group", "name", "value"), sv => `${sv.group}/${sv.name}`, sv => this.savedValueTemplate(sv))} `)}`;
   }
   savedValueTemplate(sv) {
     var _a, _b, _c, _d;
@@ -7833,7 +7900,7 @@ let BookmarkValueComponent = BookmarkValueComponent_1 = class BookmarkValueCompo
       };
       const svs = remove(this._savedValues, _sv => _sv.value === sv.value);
       this._savedValues = [...svs, svv];
-    }}" name="bm-name" type="text" class="form-control form-control-sm" placeholder="Name" .value="${(_a = sv.name) !== null && _a !== void 0 ? _a : ""}"> <label for="bm-name">Name</label> </div> <p class="col mx-2 my-0 text-wrap text-break text-truncate"> <span class="fst-italic" title="${sv.value}">${sv.value}</span> </p> </li> ` : x` <li> <a class="dropdown-item" href="#" @click="${e => this.onSavedValueSelection(e, sv)}" title="${(_b = sv.name) === null || _b === void 0 ? void 0 : _b.trim()} ${sv.value}"> <div class="d-flex align-items-start"> <i class="bi ${(_c = sv.biIcon) !== null && _c !== void 0 ? _c : "bi-star"} text-primary fw-light"> </i> <p class="mx-2 my-0 text-wrap text-break text-truncate"> ${n$1((_d = sv.name) === null || _d === void 0 ? void 0 : _d.trim(), () => x` ${sv.name} <small class="text-body-secondary fst-italic">${sv.value}</small> `, () => x`<span class="fst-italic">${sv.value}</span>`)} </p> <small class="ms-auto text-secondary fst-italic"> ${DateTime.fromISO(sv.lastUpdated).toRelative()} </small> </div> </a> </li> `;
+    }}" name="bm-name" type="text" class="form-control form-control-sm" placeholder="Name" .value="${(_a = sv.name) !== null && _a !== void 0 ? _a : ""}"> <label for="bm-name">Name</label> </div> <p class="col mx-2 my-0 text-wrap text-break text-truncate"> <span class="fst-italic" title="${sv.value}">${sv.value}</span> </p> </li> ` : x` <li> <a class="dropdown-item" href="#" @click="${e => this.onSavedValueSelection(e, sv)}" title="${(_b = sv.name) === null || _b === void 0 ? void 0 : _b.trim()} ${sv.value}"> <div class="d-flex align-items-start"> <i class="bi ${(_c = sv.biIcon) !== null && _c !== void 0 ? _c : "bi-star"} text-primary fw-light"> </i> <p class="mx-2 my-0 text-wrap text-break text-truncate"> ${n((_d = sv.name) === null || _d === void 0 ? void 0 : _d.trim(), () => x` ${sv.name} <small class="text-body-secondary fst-italic">${sv.value}</small> `, () => x`<span class="fst-italic">${sv.value}</span>`)} </p> <small class="ms-auto text-secondary fst-italic"> ${DateTime.fromISO(sv.lastUpdated).toRelative()} </small> </div> </a> </li> `;
   }
   onSavedValueSelection(e, sv) {
     var _a;
@@ -7909,39 +7976,6 @@ function notifyUser(message) {
   };
 }
 
-const Utils = {
-  tokenize(_input) {
-    const input = _input === null || _input === void 0 ? void 0 : _input.trim();
-    const pattern = /(\w+:|-)?("[^"]*"|'[^']*'|[^\s]+)/g;
-    const results = [];
-    let matched;
-    while (matched = pattern.exec(input)) {
-      const prefix = matched[1];
-      const term = matched[2];
-      const result = {
-        term
-      };
-      let m;
-      if (m = /^"(.+)"$/.exec(term)) {
-        result.term = m[1].trim();
-        result.phrase = true;
-      } else if (m = /^'(.+)'$/.exec(term)) {
-        result.term = m[1].trim();
-        result.phrase = true;
-      }
-      if (prefix) {
-        if (prefix === "-") {
-          result.exclude = true;
-        } else {
-          result.tag = prefix.slice(0, -1);
-        }
-      }
-      results.push(result);
-    }
-    return results;
-  }
-};
-
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -7997,12 +8031,14 @@ let CompanySelectorComponent = CompanySelectorComponent_1 = class CompanySelecto
             name="companies-filter"
             value="Select Companies..."
           >
-            ${n$1(this._allCompanies, () => {
+            ${n(this._allCompanies, () => c(Utils.sort(this._allCompanies, "asc", {
+      caseInsensitive: true
+    }, "Name", "ShortName"), c => c.Code, c => {
       var _a;
-      return c(((_a = this._allCompanies) !== null && _a !== void 0 ? _a : []).sort((c1, c2) => c1.ShortName > c2.ShortName ? 1 : -1), c => c.Code, c => x` <option class="${o$3({
+      return x` <option class="${o$3({
         "text-body-tertiary": !this.companyNamesByCode || !this.companyNamesByCode[c.Code]
-      })}" value="${c.Code}"> ${c.ShortName} </option> `);
-    }, () => {
+      })}" value="${c.Code}"> ${(_a = c.Name) !== null && _a !== void 0 ? _a : c.ShortName} </option> `;
+    }), () => {
       var _a;
       return c(Object.entries((_a = this.companyNamesByCode) !== null && _a !== void 0 ? _a : {}).sort((o1, o2) => o1[1] > o2[1] ? 1 : -1), ([code]) => code, ([code, name]) => x` <option value="${code}">${name}</option> `);
     })}
@@ -8098,7 +8134,7 @@ let CompanySelectorComponent = CompanySelectorComponent_1 = class CompanySelecto
   async _handleAllCompanySwitch(e) {
     const listAllCompanies = e.currentTarget.checked;
     if (listAllCompanies) {
-      const companyService = (await import('./c4bee182.js')).default;
+      const companyService = (await import('./6bb83c98.js')).default;
       this._allCompanies = await companyService.companies({});
     } else {
       this._allCompanies = void 0;
@@ -8238,7 +8274,10 @@ let AnnouncementView = AnnouncementView_1 = class AnnouncementView2 extends Base
   // Custom rendering function to replace newlines with <br>
   static renderNewlines(_data, type) {
     if (type === "display" && typeof _data === "string") {
-      return _data.replace(/\\n/g, "<br>");
+      return _data.replace(/\\n/g, "<br>").replace(/ddt{{(.*?)}}/g, (m, g1) => {
+        var _a;
+        return `<small class="text-body-secondary">${(_a = DateTime.fromISO(g1).toRelative()) !== null && _a !== void 0 ? _a : g1}</small>`;
+      });
     }
     return _data;
   }
@@ -8386,37 +8425,52 @@ let AnnouncementView = AnnouncementView_1 = class AnnouncementView2 extends Base
   }
   async getCompanyService() {
     if (!this._companyService) {
-      this._companyService = (await import('./c4bee182.js')).default;
+      this._companyService = (await import('./6bb83c98.js')).default;
     }
     return this._companyService;
   }
   async customSearch(e) {
+    var _a, _b;
     const customSearchTerms = e.target.value;
     this.logger.debug(`Searching: ${customSearchTerms}`);
-    if (!this.dataTable) {
-      return;
-    }
-    const $datatable = jQuery(this.dataTable.table().node());
+    const dataTable = this.dataTable;
+    const $datatable = jQuery(dataTable.table().node());
     const tokens = Utils.tokenize(customSearchTerms);
     if (!tokens.length) {
-      this.dataTable.search("").draw();
+      dataTable.search("").draw();
       $datatable.unmark();
       return;
     }
-    const excludes = tokens.filter(t => t.exclude && !t.tag).map(t => t.term);
+    const tokensByTags = Utils.group(tokens, t => {
+      var _a2;
+      return (_a2 = t.tag) !== null && _a2 !== void 0 ? _a2 : "None";
+    });
+    const untaggedTokens = tokensByTags.get("None");
+    if (!untaggedTokens) {
+      this.logger.debug("No valid search terms. Nothing to search");
+      return;
+    }
+    const untaggedTokensByExcludeFlag = Utils.group(untaggedTokens, t => {
+      var _a2;
+      return (_a2 = t.exclude) !== null && _a2 !== void 0 ? _a2 : false;
+    });
+    const excludes = (_a = untaggedTokensByExcludeFlag === null || untaggedTokensByExcludeFlag === void 0 ? void 0 : untaggedTokensByExcludeFlag.get(true)) === null || _a === void 0 ? void 0 : _a.map(t => t.term);
     let excludesRegex = "";
-    if (excludes.length) {
+    if (excludes === null || excludes === void 0 ? void 0 : excludes.length) {
       excludesRegex = `(?=(^(?:(?!${excludes.join("|")}).)*$))`;
     }
-    const orTerms = tokens.filter(t => !t.exclude && !t.tag).map(t => t.term);
+    const orTerms = (_b = untaggedTokensByExcludeFlag === null || untaggedTokensByExcludeFlag === void 0 ? void 0 : untaggedTokensByExcludeFlag.get(false)) === null || _b === void 0 ? void 0 : _b.map(t => t.term);
     let orTermsRegex = "";
-    if (orTerms.length) {
+    if (orTerms === null || orTerms === void 0 ? void 0 : orTerms.length) {
       orTermsRegex = `(?=.*(${orTerms.map(t => `(?:${t})`).join("|")}))`;
     }
     const searchRegex = `^${orTermsRegex}${excludesRegex}.*$`;
     this.logger.debug(`Search Regex: ${searchRegex}`);
-    this.dataTable.search(searchRegex, true, false, true).draw();
-    $datatable.unmark().markRegExp(new RegExp(orTerms.join("|"), "gmi"));
+    dataTable.search(searchRegex, true, false, true).draw();
+    $datatable.unmark();
+    if (orTerms === null || orTerms === void 0 ? void 0 : orTerms.length) {
+      $datatable.markRegExp(new RegExp(orTerms.join("|"), "gmi"));
+    }
   }
   async onCompanySelection(e) {
     var _a;

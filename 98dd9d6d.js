@@ -47,7 +47,7 @@ class AnnouncementService {
       "{{tableName}}": dataFileTypes[DataFileType.Announcement].tableName,
       "{{conditions}}": `and Date(DissemDT) >= $from and Date(DissemDT) <= $to`
     };
-    const queryFile = new URL(new URL('803b9fe7.sql', import.meta.url).href, import.meta.url).href;
+    const queryFile = new URL(new URL('fb198e18.sql', import.meta.url).href, import.meta.url).href;
     const result = await bseDataService.executeQuery(queryFile, placeholders, parameters);
     return result;
   }
