@@ -1,4 +1,4 @@
-import { d as dataFileTypes, D as DataFileType, b as bseDataService } from './ca1ae082.js';
+import { d as dataFileTypes, D as DataFileType, b as bseDataService } from './4e355c87.js';
 
 class CompanyService {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -18,13 +18,7 @@ class CompanyService {
     };
     const queryFile = new URL(new URL('8255ff33.sql', import.meta.url).href, import.meta.url).href;
     const results = await bseDataService.executeSelect(queryFile, placeholders, parameters);
-    const transformedResults = results.map(r => ({
-      Name: r.SecurityName,
-      ShortName: r.SecurityId,
-      Code: r.SecurityCode,
-      MarketCapFF: r.MktCapFF,
-      MarketCapFull: r.MktCapFull
-    }));
+    const transformedResults = results.map(r => r);
     return transformedResults;
   }
   static async create() {

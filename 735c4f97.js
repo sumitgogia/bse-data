@@ -3,7 +3,7 @@ const routes = [{
   redirect: "/bse/announcement"
 }, {
   path: "/announcement",
-  children: () => import('./b609225b.js').then(module => module.routes)
+  children: () => import('./3975b4f0.js').then(module => module.routes)
 }];
 
 export { routes };

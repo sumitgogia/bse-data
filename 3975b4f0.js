@@ -1,4 +1,4 @@
-import { n as n$4, s as s$4, j, i as i$1, t as t$1, e as e$3, A, T, a as i$2, _ as __decorate, b as e$4, B as BaseView, x, c as A$1, l as localStorageContext, d as loggerContext, D as DtfEvent, o as o$3, f as analytics } from './04da0f59.js';
+import { n as n$4, s as s$4, j, i as i$1, t as t$1, e as e$3, A, T, a as i$2, _ as __decorate, b as e$4, B as BaseView, x, c as A$1, l as localStorageContext, d as loggerContext, D as DtfEvent, o as o$3, f as analytics } from './52d78312.js';
 import { j as jQuery } from './c5e81f2c.js';
 import { h as hooks } from './e9aa0746.js';
 
@@ -8033,11 +8033,11 @@ let CompanySelectorComponent = CompanySelectorComponent_1 = class CompanySelecto
           >
             ${n(this._allCompanies, () => c(Utils.sort(this._allCompanies, "asc", {
       caseInsensitive: true
-    }, "Name", "ShortName"), c => c.Code, c => {
+    }, "SecurityName", "SecurityId"), c => c.SecurityCode, c => {
       var _a;
       return x` <option class="${o$3({
-        "text-body-tertiary": !this.companyNamesByCode || !this.companyNamesByCode[c.Code]
-      })}" value="${c.Code}"> ${(_a = c.Name) !== null && _a !== void 0 ? _a : c.ShortName} </option> `;
+        "text-body-tertiary": !this.companyNamesByCode || !this.companyNamesByCode[c.SecurityCode]
+      })}" value="${c.SecurityCode}"> ${(_a = c.SecurityName) !== null && _a !== void 0 ? _a : c.SecurityId} </option> `;
     }), () => {
       var _a;
       return c(Object.entries((_a = this.companyNamesByCode) !== null && _a !== void 0 ? _a : {}).sort((o1, o2) => o1[1] > o2[1] ? 1 : -1), ([code]) => code, ([code, name]) => x` <option value="${code}">${name}</option> `);
@@ -8069,8 +8069,50 @@ let CompanySelectorComponent = CompanySelectorComponent_1 = class CompanySelecto
     if (!companySelectElement) {
       return;
     }
-    const fields = ["SecurityId", "SecurityCode", "MktCapFF", "MktCapFull"].join("|");
-    const conditionRegex = `\\(.*?(${fields}).+?\\)`;
+    const fields = {
+      SecurityName: "SecurityName",
+      SecurityId: "SecurityId",
+      SecurityCode: "SecurityCode",
+      Grp_Index: "Grp_Index",
+      FaceVal: "FaceVal",
+      ISIN: "ISIN",
+      Industry: "Industry",
+      Group: "Group",
+      Index: "Index",
+      PAIDUP_VALUE: "PAIDUP_VALUE",
+      EPS: "EPS",
+      CEPS: "CEPS",
+      PE: "PE",
+      OPM: "OPM",
+      NPM: "NPM",
+      PB: "PB",
+      ROE: "ROE",
+      Sector: "Sector",
+      IndustryNew: "IndustryNew",
+      IGroup: "IGroup",
+      ISubGroup: "ISubGroup",
+      IShow: "IShow",
+      SetlType: "SetlType",
+      COName: "COName",
+      Contact: "Contact",
+      Email: "Email",
+      SDD: "SDD",
+      COdetails: "COdetails",
+      sddscrip: "sddscrip",
+      WAP: "WAP",
+      Turnoverin: "Turnoverin",
+      Turnover: "Turnover",
+      TTQin: "TTQin",
+      TTQ: "TTQ",
+      TwoWkAvgQtyin: "TwoWkAvgQtyin",
+      TwoWkAvgQty: "TwoWkAvgQty",
+      CktLimit: "CktLimit",
+      MktCapFull: "MktCapFull",
+      MktCapFF: "MktCapFF",
+      ExDate: "ExDate",
+      blockdttm: "blockdttm"
+    };
+    const conditionRegex = `\\(.*?(${Object.values(fields).join("|")}).+?\\)`;
     const companySqlRegex = new RegExp(`^c:"(${conditionRegex})(\\s+(AND|OR)\\s+(${conditionRegex}))*"$`);
     jQuery(companySelectElement).select2({
       placeholder: companySelectElement.getAttribute("placeholder"),
@@ -8134,7 +8176,7 @@ let CompanySelectorComponent = CompanySelectorComponent_1 = class CompanySelecto
   async _handleAllCompanySwitch(e) {
     const listAllCompanies = e.currentTarget.checked;
     if (listAllCompanies) {
-      const companyService = (await import('./6bb83c98.js')).default;
+      const companyService = (await import('./f852559d.js')).default;
       this._allCompanies = await companyService.companies({});
     } else {
       this._allCompanies = void 0;
@@ -8345,7 +8387,7 @@ let AnnouncementView = AnnouncementView_1 = class AnnouncementView2 extends Base
     const drp = jQuery("input.dates.data-filter").data("daterangepicker");
     filters.dateRange.from = drp.startDate.toDate();
     filters.dateRange.to = drp.endDate.toDate();
-    const announcementService = (await import('./98dd9d6d.js')).default;
+    const announcementService = (await import('./b175d727.js')).default;
     let announcements;
     let sEmptyTable;
     let oLanguage;
@@ -8425,7 +8467,7 @@ let AnnouncementView = AnnouncementView_1 = class AnnouncementView2 extends Base
   }
   async getCompanyService() {
     if (!this._companyService) {
-      this._companyService = (await import('./6bb83c98.js')).default;
+      this._companyService = (await import('./f852559d.js')).default;
     }
     return this._companyService;
   }
@@ -8490,7 +8532,7 @@ let AnnouncementView = AnnouncementView_1 = class AnnouncementView2 extends Base
           conditions: conditions.join(" or "),
           codes: Object.keys((_a = this._companyNamesByCode) !== null && _a !== void 0 ? _a : {})
         });
-        let cCodes = companies.map(c => c.Code);
+        let cCodes = companies.map(c => c.SecurityCode);
         if (!cCodes.length) {
           cCodes = [-1];
         }

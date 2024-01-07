@@ -18,9 +18,6 @@ async function initGapi() {
   });
   return gapi2;
 }
-function driveFileUrl(id) {
-  return `https://www.googleapis.com/drive/v2/files/${id}?alt=media&key=${apiKey}`;
-}
 const gapi = await initGapi();
 const drive = gapi.client.drive;
 
@@ -124,40 +121,42 @@ class BseDataService {
   }
   // Load CSV data using Papa Parse and return a Promise (so await syntax can be used by the caller)
   parseCsv(driveFileId, stepFn) {
-    const csvUrl = driveFileUrl(driveFileId);
     let lastErrors;
     let rowCount = 0;
     return new Promise((resolve, reject) => {
-      Papa.parse(csvUrl, {
-        download: true,
-        header: true,
-        skipEmptyLines: true,
-        dynamicTyping: true,
-        worker: true,
-        chunk: results => {
-          const {
-            data,
-            errors
-          } = results;
-          lastErrors = errors;
-          if (data) {
-            rowCount += data.length;
-            stepFn(data);
-          }
-        },
-        complete: r => {
-          const fName = this.dataFilesInfoById[driveFileId].name;
-          let errorMsg;
-          if (lastErrors === null || lastErrors === void 0 ? void 0 : lastErrors.length) {
-            errorMsg =
-            // eslint-disable-next-line prefer-template
-            lastErrors.length + " Parsing errors reported for (" + fName + "):\nErrors: " + JSON.stringify(lastErrors);
-            console.warn(errorMsg);
-          }
-          console.info(`${fName}: ${rowCount} rows parsed.`);
-          return resolve(r);
-        },
-        error: error => reject(error)
+      drive.files.get({
+        fileId: driveFileId,
+        alt: "media"
+      }).then(response => response.body).then(content => {
+        Papa.parse(content, {
+          header: true,
+          skipEmptyLines: true,
+          dynamicTyping: true,
+          chunk: results => {
+            const {
+              data,
+              errors
+            } = results;
+            lastErrors = errors;
+            if (data) {
+              rowCount += data.length;
+              stepFn(data);
+            }
+          },
+          complete: r => {
+            const fName = this.dataFilesInfoById[driveFileId].name;
+            let errorMsg;
+            if (lastErrors === null || lastErrors === void 0 ? void 0 : lastErrors.length) {
+              errorMsg =
+              // eslint-disable-next-line prefer-template
+              lastErrors.length + " Parsing errors reported for (" + fName + "):\nErrors: " + JSON.stringify(lastErrors);
+              console.warn(errorMsg);
+            }
+            console.info(`${fName}: ${rowCount} rows parsed.`);
+            return resolve(r);
+          },
+          error: error => reject(error)
+        });
       });
     });
   }
