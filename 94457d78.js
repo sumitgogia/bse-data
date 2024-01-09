@@ -1,4 +1,4 @@
-import { n as n$4, s as s$4, j, i as i$1, t as t$1, e as e$3, A, T, a as i$2, _ as __decorate, b as e$4, B as BaseView, x, c as A$1, l as localStorageContext, d as loggerContext, D as DtfEvent, o as o$3, f as analytics } from './52d78312.js';
+import { n as n$4, s as s$4, j, i as i$1, t as t$1, e as e$3, A, T, a as i$2, _ as __decorate, b as e$4, B as BaseView, x, c as A$1, l as localStorageContext, d as loggerContext, D as DtfEvent, o as o$3, f as analytics } from './29c28db3.js';
 import { j as jQuery } from './c5e81f2c.js';
 import { h as hooks } from './e9aa0746.js';
 
@@ -7727,9 +7727,9 @@ const Utils = {
           result = options.caseInsensitive ? value1.localeCompare(value2, void 0, {
             sensitivity: "base"
           }) : value1.localeCompare(value2);
-        } else if (value1 > value2) {
+        } else if (value1 > value2 || value1 != null && value2 == null) {
           result = 1;
-        } else if (value1 < value2) {
+        } else if (value1 < value2 || value1 == null && value2 != null) {
           result = -1;
         } else {
           result = 0;
@@ -8311,7 +8311,7 @@ let AnnouncementView = AnnouncementView_1 = class AnnouncementView2 extends Base
   }
   // eslint-disable-next-line class-methods-use-this
   get announcementsDatatable() {
-    return x` <div class="d-flex flex-column flex-grow-1 overflow-auto"> <div class="container-fluid dataTable-info my-2"></div> <table id="dataTable" class="table table-striped"> <thead class="table-primary"> </thead> <tbody> </tbody> </table> </div> `;
+    return x` <div class="d-flex flex-column flex-grow-1 overflow-auto"> <div class="container-fluid dataTable-info my-2"></div> <table id="dataTable" class="table"> <thead class="table-primary"> </thead> <tbody> </tbody> </table> </div> `;
   }
   // Custom rendering function to replace newlines with <br>
   static renderNewlines(_data, type) {
@@ -8327,10 +8327,10 @@ let AnnouncementView = AnnouncementView_1 = class AnnouncementView2 extends Base
   createDataTable(headers, data) {
     const columns = headers.map(header => ({
       title: header,
-      render: AnnouncementView_1.renderNewlines
+      render: AnnouncementView_1.renderNewlines,
+      visible: false
     }));
-    columns[0].visible = false;
-    columns[1].visible = false;
+    columns[3].visible = true;
     const sDataTable = "#dataTable";
     const dataTable = jQuery(sDataTable).DataTable({
       columns,
@@ -8347,13 +8347,18 @@ let AnnouncementView = AnnouncementView_1 = class AnnouncementView2 extends Base
         zeroRecords: "No announcements! Try changing or clearing filters.",
         search: ""
       },
-      order: [[1, "asc"]],
+      // order by Security Name, then by DissemDT (i.e date/time published)
+      order: [[1, "asc"], [4, "asc"]],
       rowGroup: {
-        dataSrc: 1,
-        startRender: (rows, rData) => `<span class="text-primary fw-bold">
+        // group by Security Code
+        dataSrc: 0,
+        startRender: (rows, rData) => {
+          var _a;
+          return `<span class="text-primary fw-bold">
             <i class="bi bi-buildings"></i>
-            ${rData}
-          </span>`
+            ${(_a = rows.data().filter(r => !!r[1])[0][2]) !== null && _a !== void 0 ? _a : rData}
+          </span>`;
+        }
       }
     });
     jQuery("#dataTable_info").detach().appendTo(jQuery(".dataTable-info"));
@@ -8556,7 +8561,7 @@ let AnnouncementView = AnnouncementView_1 = class AnnouncementView2 extends Base
 };
 AnnouncementView.companyCodeColumnIndex = 0;
 AnnouncementView.companyNameColumnIndex = 1;
-AnnouncementView.styles = i$2`announcements-view{display:flex;flex-direction:column;flex-grow:1;max-height:100%;overflow:auto}// Datatable style overrides .dataTables_filter label{display:block}.dataTables_wrapper>div.dt-row{margin:0}.dataTables_wrapper>div.dt-row>div{flex-shrink:1}.dataTables_scroll,.dataTables_wrapper,.dataTables_wrapper>div.dt-row,.dataTables_wrapper>div.dt-row>div{display:flex!important;flex-direction:column!important;max-height:100%;overflow:auto}.dataTables_scroll,.dataTables_scrollBody,.dataTables_wrapper>div.dt-row{flex-grow:1!important;overflow:auto}.dataTables_scrollHead{display:none!important;overflow:unset!important}div.dts tbody td,div.dts tbody th{white-space:unset!important}table.dataTable tr.even{word-break:break-word}table.dataTable tr.dtrg-group.dtrg-level-0{position:sticky;top:0}table.dataTable tr.dtrg-group.dtrg-level-0 a{text-decoration:none}table.dataTable tr.dtrg-group.dtrg-level-0 a:hover{text-decoration:underline}table.dataTable tr td{padding-left:2rem}`;
+AnnouncementView.styles = i$2`announcements-view{display:flex;flex-direction:column;flex-grow:1;max-height:100%;overflow:auto}// Datatable style overrides .dataTables_filter label{display:block}.dataTables_wrapper>div.dt-row{margin:0}.dataTables_wrapper>div.dt-row>div{flex-shrink:1}.dataTables_scroll,.dataTables_wrapper,.dataTables_wrapper>div.dt-row,.dataTables_wrapper>div.dt-row>div{display:flex!important;flex-direction:column!important;max-height:100%;overflow:auto}.dataTables_scroll,.dataTables_scrollBody,.dataTables_wrapper>div.dt-row{flex-grow:1!important;overflow:auto}.dataTables_scrollHead{display:none!important;overflow:unset!important}div.dts tbody td,div.dts tbody th{white-space:unset!important}table.dataTable tr.even{word-break:break-word}table.dataTable tr.dtrg-group th{background-color:#eee!important}table.dataTable tr.dtrg-group.dtrg-level-0{position:sticky;top:0}table.dataTable tr.dtrg-group.dtrg-level-0 a{text-decoration:none}table.dataTable tr.dtrg-group.dtrg-level-0 a:hover{text-decoration:underline}table.dataTable tr td{padding-left:2rem}`;
 __decorate([c$3({
   context: loggerContext
 })], AnnouncementView.prototype, "logger", void 0);
