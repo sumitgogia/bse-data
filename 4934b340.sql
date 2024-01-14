@@ -16,8 +16,8 @@ SELECT
         else "<a href='https://www.bseindia.com/xml-data/corpfiling/AttachLive/" || ATTACHMENTNAME || "' target='_blank'>" || NEWSSUB || "</a>"
     end || case
         when MORE is null
-        or MORE = "" then "\n" || HEADLINE
-        else "\n" || MORE
+        or MORE = "" then "\n" || coalesce(HEADLINE, "")
+        else "\n" || coalesce(MORE, "")
     end || "\n ddt{{" || DissemDT || "}}" as Announcement,
     unixepoch(DissemDT) as DisseminatedDT
 FROM

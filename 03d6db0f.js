@@ -4587,5 +4587,3 @@ hooks.HTML5_FMT = {
 };
 
 window.moment = hooks;
-
-export { hooks as h };

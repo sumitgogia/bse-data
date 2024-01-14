@@ -1,6 +1,5 @@
-import { n as n$4, s as s$4, j, i as i$1, t as t$1, e as e$3, A, T, a as i$2, _ as __decorate, b as e$4, B as BaseView, x, c as A$1, l as localStorageContext, d as loggerContext, D as DtfEvent, o as o$3, f as analytics } from './29c28db3.js';
+import { n as n$4, s as s$4, j, i as i$1, t as t$1, e as e$3, A, T, a as i$2, _ as __decorate, b as e$4, B as BaseView, x, c as A$1, l as localStorageContext, d as loggerContext, D as DtfEvent, o as o$3, f as analytics } from './c0d85e7c.js';
 import { j as jQuery } from './c5e81f2c.js';
-import { h as hooks } from './e9aa0746.js';
 
 /**
  * @license
@@ -8318,7 +8317,7 @@ let AnnouncementView = AnnouncementView_1 = class AnnouncementView2 extends Base
     if (type === "display" && typeof _data === "string") {
       return _data.replace(/\\n/g, "<br>").replace(/ddt{{(.*?)}}/g, (m, g1) => {
         var _a;
-        return `<small class="text-body-secondary">${(_a = DateTime.fromISO(g1).toRelative()) !== null && _a !== void 0 ? _a : g1}</small>`;
+        return `<small class="text-body-secondary" title="${g1}">${(_a = DateTime.fromISO(g1).toRelative()) !== null && _a !== void 0 ? _a : g1}</small>`;
       });
     }
     return _data;
@@ -8382,6 +8381,7 @@ let AnnouncementView = AnnouncementView_1 = class AnnouncementView2 extends Base
     return dataTable;
   }
   async updateDatatable() {
+    var _a;
     const filters = {
       dateRange: {
         from: void 0,
@@ -8392,7 +8392,7 @@ let AnnouncementView = AnnouncementView_1 = class AnnouncementView2 extends Base
     const drp = jQuery("input.dates.data-filter").data("daterangepicker");
     filters.dateRange.from = drp.startDate.toDate();
     filters.dateRange.to = drp.endDate.toDate();
-    const announcementService = (await import('./b175d727.js')).default;
+    const announcementService = (await import('./1bf7a005.js')).default;
     let announcements;
     let sEmptyTable;
     let oLanguage;
@@ -8413,6 +8413,7 @@ let AnnouncementView = AnnouncementView_1 = class AnnouncementView2 extends Base
     }
     if (!announcements || !announcements.length || !announcements[0].values.length) {
       this.logger.warn(`No announcement data found for filters: ${JSON.stringify(filters)}`);
+      (_a = this.dataTable) === null || _a === void 0 ? void 0 : _a.draw();
       return;
     }
     const tableHeaders = announcements[0].columns;
@@ -8438,26 +8439,40 @@ let AnnouncementView = AnnouncementView_1 = class AnnouncementView2 extends Base
     if (!drpElement) {
       return;
     }
-    const currentDate = /* @__PURE__ */new Date();
-    const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1);
+    const currentDate = DateTime.now();
+    const minDate = currentDate.startOf("month").minus({
+      month: 1
+    }).toJSDate();
+    const maxDate = currentDate.endOf("day").toJSDate();
+    const startDate = currentDate.startOf("day").toJSDate();
+    const endDate = currentDate.endOf("day").toJSDate();
     const $drp = jQuery(drpElement);
     const drp = $drp.daterangepicker({
-      minDate: firstDay,
-      maxDate: currentDate,
+      timePicker: true,
+      minDate,
+      maxDate,
       maxSpan: {
         days: 7
       },
-      startDate: currentDate,
-      endDate: currentDate,
+      startDate,
+      endDate,
       ranges: {
-        Today: [hooks(), hooks()],
-        Yesterday: [hooks().subtract(1, "days"), hooks().subtract(1, "days")],
-        "Last 7 Days": [hooks().subtract(6, "days"), hooks()]
-        // 'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-        // 'This Month': [moment().startOf('month'), moment().endOf('month')],
-        // 'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+        Today: [currentDate.startOf("day").toJSDate(), currentDate.endOf("day").toJSDate()],
+        Yesterday: [currentDate.minus({
+          day: 1
+        }).startOf("day").toJSDate(), currentDate.minus({
+          day: 1
+        }).endOf("day").toJSDate()],
+        "Last 7 Days": [currentDate.minus({
+          day: 6
+        }).startOf("day").toJSDate(), currentDate.endOf("day").toJSDate()],
+        "This Month": [currentDate.startOf("month").startOf("day").toJSDate(), currentDate.endOf("day").toJSDate()],
+        "Last Month": [currentDate.minus({
+          month: 1
+        }).startOf("month").startOf("day").toJSDate(), currentDate.minus({
+          month: 1
+        }).endOf("month").endOf("day").toJSDate()]
       },
-
       // opens: 'left', // Position the calendar to the left
       locale: {
         format: "MMMM DD, YYYY"
@@ -8575,4 +8590,9 @@ const routes = [{
   component: "announcements-view"
 }];
 
-export { routes };
+var index = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  routes: routes
+});
+
+export { DateTime as D, index as i };
