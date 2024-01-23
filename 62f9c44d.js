@@ -1,4 +1,4 @@
-import { n as n$4, s as s$4, j, i as i$1, t as t$1, e as e$3, A, T, a as i$2, _ as __decorate, b as e$4, B as BaseView, x, c as A$1, l as localStorageContext, d as loggerContext, D as DtfEvent, o as o$3, f as analytics } from './c0d85e7c.js';
+import { n as n$4, s as s$4, j, i as i$1, t as t$1, e as e$3, A, T, a as i$2, _ as __decorate, b as e$4, B as BaseView, x, c as A$1, l as localStorageContext, d as loggerContext, D as DtfEvent, o as o$3, f as analytics } from './de729207.js';
 import { j as jQuery } from './c5e81f2c.js';
 
 /**
@@ -8352,10 +8352,11 @@ let AnnouncementView = AnnouncementView_1 = class AnnouncementView2 extends Base
         // group by Security Code
         dataSrc: 0,
         startRender: (rows, rData) => {
-          var _a;
+          var _a, _b;
+          const d = (_b = (_a = rows.data().toArray().find(r => !!r[1])) === null || _a === void 0 ? void 0 : _a.at(2)) !== null && _b !== void 0 ? _b : rData;
           return `<span class="text-primary fw-bold">
             <i class="bi bi-buildings"></i>
-            ${(_a = rows.data().filter(r => !!r[1])[0][2]) !== null && _a !== void 0 ? _a : rData}
+            ${d}
           </span>`;
         }
       }
@@ -8392,7 +8393,7 @@ let AnnouncementView = AnnouncementView_1 = class AnnouncementView2 extends Base
     const drp = jQuery("input.dates.data-filter").data("daterangepicker");
     filters.dateRange.from = drp.startDate.toDate();
     filters.dateRange.to = drp.endDate.toDate();
-    const announcementService = (await import('./1bf7a005.js')).default;
+    const announcementService = (await import('./c85db4d4.js')).default;
     let announcements;
     let sEmptyTable;
     let oLanguage;
