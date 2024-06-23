@@ -133,14 +133,18 @@ class BseDataService {
           skipEmptyLines: true,
           dynamicTyping: true,
           chunk: results => {
-            const {
-              data,
-              errors
-            } = results;
-            lastErrors = errors;
-            if (data) {
-              rowCount += data.length;
-              stepFn(data);
+            try {
+              const {
+                data,
+                errors
+              } = results;
+              lastErrors = errors;
+              if (data) {
+                rowCount += data.length;
+                stepFn(data);
+              }
+            } catch (error) {
+              reject(error);
             }
           },
           complete: r => {
@@ -237,11 +241,11 @@ class BseDataService {
             statement === null || statement === void 0 ? void 0 : statement.run(tRow);
           });
           this.db.exec("COMMIT");
-          this.dataFilesInfoById[id].inDB = true;
         } catch (error) {
           this.db.exec("ROLLBACK");
           throw error;
         }
+        this.dataFilesInfoById[id].inDB = true;
       });
       return fileInfo;
     } finally {

@@ -6505,7 +6505,7 @@ let DatflatApp = DatflatApp_1 = class DatflatApp2 extends BaseView {
       component: "about-view"
     }, {
       path: "/bse",
-      children: () => import('./90a9c7f9.js').then(module => module.routes)
+      children: () => import('./a82d96d0.js').then(module => module.routes)
     }
     // { path: '(.*)', redirect: '/' },
     ]);

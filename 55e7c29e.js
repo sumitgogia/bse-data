@@ -1,4 +1,4 @@
-import { n as n$4, s as s$4, j, i as i$1, t as t$1, e as e$3, A, T, a as i$2, _ as __decorate, b as e$4, B as BaseView, x, c as A$1, l as localStorageContext, d as loggerContext, D as DtfEvent, o as o$3, f as analytics } from './de729207.js';
+import { n as n$4, s as s$4, j, i as i$1, t as t$1, e as e$3, A, T, a as i$2, _ as __decorate, b as e$4, B as BaseView, x, c as A$1, l as localStorageContext, d as loggerContext, D as DtfEvent, o as o$3, f as analytics } from './e5dc7073.js';
 import { j as jQuery } from './c5e81f2c.js';
 
 /**
@@ -7920,7 +7920,7 @@ let BookmarkValueComponent = BookmarkValueComponent_1 = class BookmarkValueCompo
     this._savedValues = remove(this._savedValues, sv => sv.value === value);
   }
 };
-BookmarkValueComponent.styles = i$2`bookmark-value .dropdown-menu .text-truncate{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical}`;
+BookmarkValueComponent.styles = i$2`bookmark-value .dropdown-menu{min-height:200px;max-height:calc(-200px + 100vh);overflow-y:scroll}bookmark-value .dropdown-menu .text-truncate{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical}`;
 __decorate([c$3({
   context: localStorageContext
 })], BookmarkValueComponent.prototype, "localStorageService", void 0);
@@ -8175,7 +8175,7 @@ let CompanySelectorComponent = CompanySelectorComponent_1 = class CompanySelecto
   async _handleAllCompanySwitch(e) {
     const listAllCompanies = e.currentTarget.checked;
     if (listAllCompanies) {
-      const companyService = (await import('./f852559d.js')).default;
+      const companyService = (await import('./6f122441.js')).default;
       this._allCompanies = await companyService.companies({});
     } else {
       this._allCompanies = void 0;
@@ -8393,7 +8393,7 @@ let AnnouncementView = AnnouncementView_1 = class AnnouncementView2 extends Base
     const drp = jQuery("input.dates.data-filter").data("daterangepicker");
     filters.dateRange.from = drp.startDate.toDate();
     filters.dateRange.to = drp.endDate.toDate();
-    const announcementService = (await import('./c85db4d4.js')).default;
+    const announcementService = (await import('./59f0b94c.js')).default;
     let announcements;
     let sEmptyTable;
     let oLanguage;
@@ -8488,7 +8488,7 @@ let AnnouncementView = AnnouncementView_1 = class AnnouncementView2 extends Base
   }
   async getCompanyService() {
     if (!this._companyService) {
-      this._companyService = (await import('./f852559d.js')).default;
+      this._companyService = (await import('./6f122441.js')).default;
     }
     return this._companyService;
   }
