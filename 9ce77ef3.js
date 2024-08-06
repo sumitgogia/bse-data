@@ -6499,13 +6499,16 @@ let DatflatApp = DatflatApp_1 = class DatflatApp2 extends BaseView {
     const router = new Router(this.querySelector("main.outlet"));
     router.setRoutes([{
       path: "/",
-      redirect: "/bse"
+      redirect: "/help"
     }, {
       path: "/about",
       component: "about-view"
     }, {
       path: "/bse",
-      children: () => import('./a82d96d0.js').then(module => module.routes)
+      children: () => import('./c021ee51.js').then(module => module.routes)
+    }, {
+      path: "/help",
+      children: () => import('./2c82c60a.js').then(module => module.routes)
     }
     // { path: '(.*)', redirect: '/' },
     ]);
@@ -6543,13 +6546,10 @@ let DatflatApp = DatflatApp_1 = class DatflatApp2 extends BaseView {
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="/bse/announcements"
+              <a class="nav-link active" aria-current="page" href="/bse"
                 >BSE Announcements</a
               >
-              <a class="nav-link" href="#">BSE Bulks</a>
+              <a class="nav-link text-danger" href="/help">Help</a>
             </div>
           </div>
         </div>
@@ -6586,4 +6586,4 @@ __decorate([n$5({
 })], DatflatApp.prototype, "spinLogo", void 0);
 DatflatApp = DatflatApp_1 = __decorate([e$5("datf-lat")], DatflatApp);
 
-export { A$3 as A, BaseView as B, DtfEvent as D, T$2 as T, __decorate as _, i$7 as a, e$5 as b, A$2 as c, loggerContext as d, e$1 as e, analytics as f, i$3 as i, j$2 as j, localStorageContext as l, n$5 as n, o$2 as o, s$2 as s, t$1 as t, x$2 as x };
+export { A$3 as A, BaseView as B, DtfEvent as D, T$2 as T, __decorate as _, i$3 as a, e$1 as b, A$2 as c, localStorageContext as d, e$5 as e, analytics as f, i$7 as i, j$2 as j, loggerContext as l, n$5 as n, o$2 as o, s$2 as s, t$1 as t, x$2 as x };
