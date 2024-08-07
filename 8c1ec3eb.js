@@ -1,5 +1,5 @@
-import { i, _ as __decorate, e, B as BaseView, x, l as loggerContext } from './9ce77ef3.js';
-import { c } from './06a450c1.js';
+import { i, _ as __decorate, e, B as BaseView, x, l as loggerContext } from './905921cd.js';
+import { c } from './72359b64.js';
 
 var HelpComponent_1;
 let HelpComponent = HelpComponent_1 = class HelpComponent2 extends BaseView {
@@ -16,7 +16,7 @@ let HelpComponent = HelpComponent_1 = class HelpComponent2 extends BaseView {
           <div class="col">
             <div class="card border-danger my-3">
               <div class="card-header text-danger">
-                Help us reclaim our property
+                Help Ridhi and Sumit get their house back
               </div>
               <div class="card-body">
                 <h5 class="card-title">TL;DR</h5>

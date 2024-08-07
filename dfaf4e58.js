@@ -1,5 +1,5 @@
-import { n as n$4, j, a as i$1, t as t$1, b as e$3, A, T, i as i$2, _ as __decorate, e as e$4, B as BaseView, x, c as A$1, d as localStorageContext, l as loggerContext, D as DtfEvent, o as o$3, f as analytics } from './9ce77ef3.js';
-import { c as c$3 } from './06a450c1.js';
+import { n as n$4, j, a as i$1, t as t$1, b as e$3, A, T, i as i$2, _ as __decorate, e as e$4, B as BaseView, x, c as A$1, d as localStorageContext, l as loggerContext, D as DtfEvent, o as o$3, f as analytics } from './905921cd.js';
+import { c as c$3 } from './72359b64.js';
 import { j as jQuery } from './c5e81f2c.js';
 
 /**
@@ -8338,7 +8338,7 @@ let AnnouncementView = AnnouncementView_1 = class AnnouncementView2 extends Base
     const drp = jQuery("input.dates.data-filter").data("daterangepicker");
     filters.dateRange.from = drp.startDate.toDate();
     filters.dateRange.to = drp.endDate.toDate();
-    const announcementService = (await import('./a446805a.js')).default;
+    const announcementService = (await import('./74a2bddd.js')).default;
     let announcements;
     let sEmptyTable;
     let oLanguage;

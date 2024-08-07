@@ -6499,16 +6499,16 @@ let DatflatApp = DatflatApp_1 = class DatflatApp2 extends BaseView {
     const router = new Router(this.querySelector("main.outlet"));
     router.setRoutes([{
       path: "/",
-      redirect: "/help"
+      redirect: "/bse"
     }, {
       path: "/about",
       component: "about-view"
     }, {
       path: "/bse",
-      children: () => import('./c021ee51.js').then(module => module.routes)
+      children: () => import('./e8cfdf08.js').then(module => module.routes)
     }, {
       path: "/help",
-      children: () => import('./2c82c60a.js').then(module => module.routes)
+      children: () => import('./8c1ec3eb.js').then(module => module.routes)
     }
     // { path: '(.*)', redirect: '/' },
     ]);
@@ -6549,7 +6549,7 @@ let DatflatApp = DatflatApp_1 = class DatflatApp2 extends BaseView {
               <a class="nav-link active" aria-current="page" href="/bse"
                 >BSE Announcements</a
               >
-              <a class="nav-link text-danger" href="/help">Help</a>
+              <!-- <a class="nav-link text-danger" href="/help">Help</a> -->
             </div>
           </div>
         </div>
