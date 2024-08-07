@@ -30,6 +30,17 @@
     />
     <meta property="og:url" content="https://datf.lat/help" />
     <meta property="og:image" content="" />
+
+    <script>
+      (function () {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect != location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
+
   </head>
   <body data-bs-no-jquery="">
     <datf-lat class="min-vh-100 d-flex flex-column"></datf-lat>
