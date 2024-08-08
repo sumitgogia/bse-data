@@ -1,5 +1,5 @@
-import { i, _ as __decorate, e, B as BaseView, x, l as loggerContext } from './905921cd.js';
-import { c } from './72359b64.js';
+import { i, _ as __decorate, e, B as BaseView, x, l as loggerContext } from './c824a241.js';
+import { c } from './33d1fe91.js';
 
 var HelpComponent_1;
 let HelpComponent = HelpComponent_1 = class HelpComponent2 extends BaseView {
@@ -15,17 +15,16 @@ let HelpComponent = HelpComponent_1 = class HelpComponent2 extends BaseView {
         <div class="row">
           <div class="col">
             <div class="card border-danger my-3">
-              <div class="card-header text-danger">
+              <h4 class="card-header text-danger">
                 Help Ridhi and Sumit get their house back
-              </div>
+              </h4>
               <div class="card-body">
                 <h5 class="card-title">TL;DR</h5>
-                <small>
-                  Most up to date information on this, including our contact
-                  details, are at
-                  <a href="https://datf.lat/help">https://datf.lat/help</a>
+                <small class="d-block my-2">
+                  Our contact information and full details of all communication
+                  with the tenant are at
+                  <a href="https://datf.lat/help">https://datf.lat/help</a>.
                 </small>
-                <br />
                 <p class="card-text">
                   Our tenant (<b>Anisha Nicole Saini</b> D/o
                   <b>Manpreet Singh Saini</b> owners of
@@ -181,8 +180,22 @@ let HelpComponent = HelpComponent_1 = class HelpComponent2 extends BaseView {
       <div class="container-fluid">
         <div class="timeline">
           <div class="timeline-item">
+            <div class="timeline-item-content right">
+              <h5>Cease and Desist noticed. More threats.</h5>
+              <p>More copy paste.</p>
+              <span class="text-muted">July 03, 2024</span>
+              <a
+                target="_blank"
+                class="icon-link icon-link-hover fs-2 mx-2"
+                href="https://drive.google.com/file/d/1lRBefAMU704hklMlzq2TKJmTVTx0O6tV/view?usp=drive_link"
+              >
+                <i class="bi bi-filetype-pdf" aria-hidden="true"> </i>
+              </a>
+            </div>
+          </div>
+          <div class="timeline-item">
             <div class="timeline-item-content left">
-              <h5>Going public.</h5>
+              <h5>Notice of public social campaign</h5>
               <p>
                 You haven't made rent payments for five consecutive months, yet
                 you have no qualms about lying about it in a legal notice. While
