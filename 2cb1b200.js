@@ -6480,6 +6480,18 @@ let DatflatApp = DatflatApp_1 = class DatflatApp2 extends BaseView {
     this.logger = console;
     this.localStorageService = new LocalStorageService(window.localStorage, "datflat/v1");
     this.spinLogo = false;
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const encodedData = params.get("data");
+      if (encodedData) {
+        const data = JSON.parse(decodeURIComponent(atob(encodedData)));
+        Object.entries(data).forEach(([key, value]) => {
+          localStorage.setItem(key, value);
+        });
+      }
+    } catch (error) {
+      this.logger.warn("Failed to migrate localstorage data", error);
+    }
     let taskCount = 0;
     this.addEventListener(DtfEvent.LONG_TASK_START, e => {
       taskCount += 1;
@@ -6499,16 +6511,13 @@ let DatflatApp = DatflatApp_1 = class DatflatApp2 extends BaseView {
     const router = new Router(this.querySelector("main.outlet"));
     router.setRoutes([{
       path: "/",
-      redirect: "/help"
+      redirect: "/bse"
     }, {
       path: "/about",
       component: "about-view"
     }, {
       path: "/bse",
-      children: () => import('./c021ee51.js').then(module => module.routes)
-    }, {
-      path: "/help",
-      children: () => import('./2c82c60a.js').then(module => module.routes)
+      children: () => import('./152fe348.js').then(module => module.routes)
     }
     // { path: '(.*)', redirect: '/' },
     ]);
@@ -6549,7 +6558,7 @@ let DatflatApp = DatflatApp_1 = class DatflatApp2 extends BaseView {
               <a class="nav-link active" aria-current="page" href="/bse"
                 >BSE Announcements</a
               >
-              <a class="nav-link text-danger" href="/help">Help</a>
+              <a class="nav-link" href="#">BSE Bulks</a>
             </div>
           </div>
         </div>
@@ -6586,4 +6595,4 @@ __decorate([n$5({
 })], DatflatApp.prototype, "spinLogo", void 0);
 DatflatApp = DatflatApp_1 = __decorate([e$5("datf-lat")], DatflatApp);
 
-export { A$3 as A, BaseView as B, DtfEvent as D, T$2 as T, __decorate as _, i$3 as a, e$1 as b, A$2 as c, localStorageContext as d, e$5 as e, analytics as f, i$7 as i, j$2 as j, loggerContext as l, n$5 as n, o$2 as o, s$2 as s, t$1 as t, x$2 as x };
+export { A$3 as A, BaseView as B, DtfEvent as D, T$2 as T, __decorate as _, i$7 as a, e$5 as b, A$2 as c, loggerContext as d, e$1 as e, analytics as f, i$3 as i, j$2 as j, localStorageContext as l, n$5 as n, o$2 as o, s$2 as s, t$1 as t, x$2 as x };

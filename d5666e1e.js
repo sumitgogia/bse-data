@@ -1,5 +1,4 @@
-import { n as n$4, j, a as i$1, t as t$1, b as e$3, A, T, i as i$2, _ as __decorate, e as e$4, B as BaseView, x, c as A$1, d as localStorageContext, l as loggerContext, D as DtfEvent, o as o$3, f as analytics } from './9ce77ef3.js';
-import { c as c$3 } from './06a450c1.js';
+import { n as n$4, s as s$4, j, i as i$1, t as t$1, e as e$3, A, T, a as i$2, _ as __decorate, b as e$4, B as BaseView, x, c as A$1, l as localStorageContext, d as loggerContext, D as DtfEvent, o as o$3, f as analytics } from './2cb1b200.js';
 import { j as jQuery } from './c5e81f2c.js';
 
 /**
@@ -12,6 +11,62 @@ function t(t) {
     ...t,
     state: !0
   });
+}
+
+/**
+ * @license
+ * Copyright 2021 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+class s$3 {
+  constructor(t, s, i, h) {
+    if (this.subscribe = !1, this.provided = !1, this.value = void 0, this.t = (t, s) => {
+      this.unsubscribe && (this.unsubscribe !== s && (this.provided = !1, this.unsubscribe()), this.subscribe || this.unsubscribe()), this.value = t, this.host.requestUpdate(), this.provided && !this.subscribe || (this.provided = !0, this.callback && this.callback(t, s)), this.unsubscribe = s;
+    }, this.host = t, void 0 !== s.context) {
+      const t = s;
+      this.context = t.context, this.callback = t.callback, this.subscribe = t.subscribe ?? !1;
+    } else this.context = s, this.callback = i, this.subscribe = h ?? !1;
+    this.host.addController(this);
+  }
+  hostConnected() {
+    this.dispatchRequest();
+  }
+  hostDisconnected() {
+    this.unsubscribe && (this.unsubscribe(), this.unsubscribe = void 0);
+  }
+  dispatchRequest() {
+    this.host.dispatchEvent(new s$4(this.context, this.t, this.subscribe));
+  }
+}
+
+/**
+ * @license
+ * Copyright 2022 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+function c$3({
+  context: c,
+  subscribe: e
+}) {
+  return (o, n) => {
+    "object" == typeof n ? n.addInitializer(function () {
+      new s$3(this, {
+        context: c,
+        callback: t => {
+          this[n.name] = t;
+        },
+        subscribe: e
+      });
+    }) : o.constructor.addInitializer(o => {
+      new s$3(o, {
+        context: c,
+        callback: t => {
+          o[n] = t;
+        },
+        subscribe: e
+      });
+    });
+  };
 }
 
 /**
@@ -8338,7 +8393,7 @@ let AnnouncementView = AnnouncementView_1 = class AnnouncementView2 extends Base
     const drp = jQuery("input.dates.data-filter").data("daterangepicker");
     filters.dateRange.from = drp.startDate.toDate();
     filters.dateRange.to = drp.endDate.toDate();
-    const announcementService = (await import('./a446805a.js')).default;
+    const announcementService = (await import('./f6f469a3.js')).default;
     let announcements;
     let sEmptyTable;
     let oLanguage;

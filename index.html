@@ -20,14 +20,11 @@
     <link rel="stylesheet" href="e3ded324.css" />
     <link rel="stylesheet" href="9dc5ce16.css" />
     <title>Datf-lat: Filter, Search, Visualize data</title>
-
     <script>
-      (function () {
-        var redirect = sessionStorage.redirect;
-        delete sessionStorage.redirect;
-        if (redirect && redirect != location.href) {
-          history.replaceState(null, null, redirect);
-        }
+      !(function () {
+        var e = sessionStorage.redirect;
+        delete sessionStorage.redirect,
+          e && e != location.href && history.replaceState(null, null, e);
       })();
     </script>
   </head>
@@ -40,6 +37,6 @@
     <script defer="" src="1b8aa348.js"></script>
     <script defer="" src="46e83a06.js"></script>
     <script defer="" src="8fc961f8.js"></script>
-    <script type="module" src="./9ce77ef3.js" defer=""></script>
+    <script type="module" src="./2cb1b200.js" defer=""></script>
   </body>
 </html>
